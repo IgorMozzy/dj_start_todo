@@ -76,8 +76,12 @@ WSGI_APPLICATION = 'todolist_core.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'labsite',  # Имя вашей базы данных
+        'USER': 'myadmin',      # Имя пользователя
+        'PASSWORD': 'mypassword',  # Пароль пользователя
+        'HOST': 'localhost',   # Хост, по умолчанию 'localhost', опционально
+        'PORT': '5432',        # Порт, по умолчанию '5432', опционально
     }
 }
 

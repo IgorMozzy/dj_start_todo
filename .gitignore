@@ -1,3 +1,4 @@
 .idea/
 .venv/
-.coverage
+todolist_core/db.sqlite3
+/temp*
