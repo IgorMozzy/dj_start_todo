@@ -11,6 +11,7 @@ from .models import Task, Comment, Tag
 
 class CommentInline(admin.TabularInline):
     model = Comment
+    extra = 0  # removes additional empty fields
 
 
 @admin.register(Task)
