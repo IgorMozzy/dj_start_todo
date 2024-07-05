@@ -14,6 +14,10 @@ class Task(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name = 'Task'
+        verbose_name_plural = 'Tasks'
+
 
 class Comment(models.Model):
     task = models.ForeignKey(Task, on_delete=models.CASCADE, related_name='comments')
@@ -21,7 +25,7 @@ class Comment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f'Comment by {self.id} on {self.created_at}'
+        return f'Comment by {self.pk} on {self.created_at}'  # primary key = id
 
 
 class Tag(models.Model):
