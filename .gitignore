@@ -1,4 +1,5 @@
 .idea/
 .venv/
+.env
 todolist_core/db.sqlite3
 /temp*
