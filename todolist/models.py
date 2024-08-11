@@ -1,9 +1,13 @@
 from django.db import models
 
+from users.models import User
+
+
 # Create your models here.
 
 
 class Task(models.Model):
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, db_index=True, null=True, blank=True)
     title = models.CharField(max_length=200)
     author = models.CharField(null=True, blank=True, max_length=25)
     completed = models.BooleanField(default=False)

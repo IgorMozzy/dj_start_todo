@@ -3,6 +3,7 @@ from rest_framework import serializers
 from rest_framework import serializers
 from todolist.models import Task, Comment, Tag
 
+from .utils import get_cached_tags
 
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
@@ -29,3 +30,7 @@ class TaskSerializer(serializers.ModelSerializer):
 
     def get_comments_count(self, obj):
         return obj.comments.count()
+
+    def get_tags(self, obj):
+        tags = get_cached_tags(obj.id)
+        return [tag.name for tag in tags]

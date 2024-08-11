@@ -1,28 +1,49 @@
+from django.contrib.auth import authenticate
 from django.shortcuts import render
 
 from rest_framework import viewsets
 from rest_framework import generics, mixins
+from rest_framework.generics import ListAPIView
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.views import APIView
+from rest_framework_simplejwt.tokens import RefreshToken
 
+from users.permissions import IsOwner
 from .models import Task, Comment, Tag
 from todolist.serializers import TaskSerializer, CommentSerializer, TagSerializer
 
 
-# Create your views here.
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
+
+
+@method_decorator(cache_page(60 * 15), name='get')
+class TagListView(ListAPIView):
+    queryset = Tag.objects.all()
+    serializer_class = TagSerializer
 
 
 def base_html(request):
     tasks = Task.objects.all()
     return render(request, template_name='todolist/base.html', context={'tasks': tasks})
 
+
 class TaskViewSet(viewsets.ModelViewSet):
+    # permission_classes = [IsAuthenticated, IsOwner]
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
 
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+
+
 class CommentViewSet(viewsets.ModelViewSet):
+    # permission_classes = [IsAuthenticated]
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
 
 class TagViewSet(viewsets.ModelViewSet):
+    # permission_classes = [IsAuthenticated]
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
 

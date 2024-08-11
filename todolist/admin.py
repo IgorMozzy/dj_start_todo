@@ -16,7 +16,7 @@ class CommentInline(admin.TabularInline):
 
 @admin.register(Task)
 class TasksAdmin(admin.ModelAdmin):
-    list_display = ('title', 'author', 'deadline', 'description')
+    list_display = ('title', 'author', 'deadline', 'description', 'owner')
     search_fields = ('title', 'description')
     list_filter = ('deadline', 'author', 'tags')
 

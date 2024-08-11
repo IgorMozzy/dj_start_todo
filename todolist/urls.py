@@ -6,6 +6,8 @@ from .views import *
 from rest_framework.routers import DefaultRouter
 from todolist.views import TaskViewSet, CommentViewSet, TagViewSet
 
+app_name = 'todolist'
+
 router = DefaultRouter()
 router.register(r'tasks', TaskViewSet)
 router.register(r'comments', CommentViewSet)
@@ -30,7 +32,7 @@ urlpatterns = [
 
     # Маршрутизация для работы контроллеров модели Tag
     # path('tags/create/', TagCreateView.as_view(), name='tag-create'),
-    # path('tags/', TagListView.as_view(), name='tag-list'),
+    path('tags_cache/', TagListView.as_view(), name='tag-list'),
     # path('tags/<int:pk>/', TagRetrieveView.as_view(), name='tag-retrieve'),
     # path('tags/<int:pk>/update/', TagUpdateView.as_view(), name='tag-update'),
     # path('tags/<int:pk>/delete/', TagDestroyView.as_view(), name='tag-destroy')
