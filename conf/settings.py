@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import os
 from pathlib import Path
+
+from celery.schedules import crontab
 from dotenv import load_dotenv
 from datetime import timedelta
 
@@ -181,4 +183,26 @@ LOGGING = {
             'level': 'DEBUG',
         },
     },
+}
+
+# URL подключения к Redis
+CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL')
+
+# Celery Backend для хранения результатов задач
+CELERY_RESULT_BACKEND = os.getenv('CELERY_RESULT_BACKEND '),
+# Celery
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'UTC'
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header',
+        }
+    },
+    'USE_SESSION_AUTH': False,
 }

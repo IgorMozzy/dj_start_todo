@@ -1,9 +1,8 @@
 from rest_framework import serializers
-
-from rest_framework import serializers
 from todolist.models import Task, Comment, Tag
 
 from .utils import get_cached_tags
+
 
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
@@ -18,14 +17,13 @@ class CommentSerializer(serializers.ModelSerializer):
 
 
 class TaskSerializer(serializers.ModelSerializer):
-    # создаем класс наследник от базового класса сериализатор на основе модели
     comments_count = serializers.SerializerMethodField()
     tags = TagSerializer(many=True, read_only=True)
     comments = CommentSerializer(many=True, read_only=True)
 
     class Meta:
-        model = Task  # указываем модель, для которой будут сериализаваться и десериализоваться данные
-        # fields = '__all__'  # указываем набор полей, с которыми будем работать при сериализации и десериализации
+        model = Task
+        # fields = '__all__'
         fields = ['title', 'description', 'deadline', 'completed', 'comments_count', 'tags', 'comments']
 
     def get_comments_count(self, obj):
