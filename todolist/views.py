@@ -73,7 +73,7 @@ class TaskDestroyView(generics.DestroyAPIView):
 
 # Comment Views
 class CommentCreateView(generics.CreateAPIView):
-    """Класс-контроллер для создани объектов модели Comment"""
+    """Comment creation"""
     permission_classes = AUTH_MODE
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
@@ -84,28 +84,28 @@ class CommentCreateView(generics.CreateAPIView):
 
 
 class CommentListView(generics.ListAPIView):
-    """Класс-контроллер для просомтра списка объектов модели Comment"""
+    """Comments list view"""
     permission_classes = AUTH_MODE
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
 
 
 class CommentRetrieveView(generics.RetrieveAPIView):
-    """Класс-контроллер для просмотра отдельного объекта модели Comment"""
+    """Comment detailed view"""
     permission_classes = AUTH_MODE
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
 
 
 class CommentUpdateView(generics.UpdateAPIView):
-    """Класс-контроллер для редактирования объектов модели Comment"""
+    """Comment update"""
     permission_classes = AUTH_MODE
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
 
 
 class CommentDestroyView(generics.DestroyAPIView):
-    """Класс-контроллер для удаления объектов модели Comment"""
+    """Comment deletion"""
     permission_classes = AUTH_MODE
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
@@ -113,35 +113,35 @@ class CommentDestroyView(generics.DestroyAPIView):
 
 # Tag Views
 class TagCreateView(generics.CreateAPIView):
-    """Класс-контроллер для создани объектов модели Tag"""
+    """Tag creation"""
     permission_classes = AUTH_MODE
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
 
 
 class TagListView(generics.ListAPIView):
-    """Класс-контроллер для просомтра списка объектов модели Tag"""
+    """Tags list view"""
     permission_classes = AUTH_MODE
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
 
 
 class TagRetrieveView(generics.RetrieveAPIView):
-    """Класс-контроллер для просмотра отдельного объекта модели Tag"""
+    """Tag detailed view"""
     permission_classes = AUTH_MODE
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
 
 
 class TagUpdateView(generics.UpdateAPIView):
-    """Класс-контроллер для редактирования объектов модели Tag"""
+    """Tag update"""
     permission_classes = AUTH_MODE
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
 
 
 class TagDestroyView(generics.DestroyAPIView):
-    """Класс-контроллер для удаления объектов модели Comment"""
+    """Tag deletion"""
     permission_classes = AUTH_MODE
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
